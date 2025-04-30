@@ -1,5 +1,6 @@
 ﻿$(() => {
-    const modal = new bootstrap.Modal($(".modal")[0]);
+    const addModal = new bootstrap.Modal($('#add-modal')[0]);
+    const editModal = new bootstrap.Modal($('#edit-modal')[0]);
 
     const refreshPeople = (cb) => {
         $("tbody tr:gt(0)").remove();
@@ -27,7 +28,7 @@
         $("#firstName").val('');
         $("#lastName").val('');
         $("#age").val('');
-        modal.show();
+        addModal.show(); 
     });
 
     $("#save-person").on('click', function () {
@@ -41,7 +42,7 @@
             age: age
         }, function () {
             refreshPeople();
-            modal.hide();
+            addModal.hide(); 
         });
     });
 
@@ -56,7 +57,7 @@
         $("#edit-firstName").val(firstName);
         $("#edit-lastName").val(lastName);
         $("#edit-age").val(age);
-        $("#edit-modal").modal('show');
+        editModal.show(); 
     });
 
     $("#update-person").on('click', function () {
@@ -72,7 +73,7 @@
             age
         }, function () {
             refreshPeople();
-            $("#edit-modal").modal('hide');
+            editModal.hide()
         });
     });
 
@@ -85,4 +86,3 @@
 
     refreshPeople();
 });
-
